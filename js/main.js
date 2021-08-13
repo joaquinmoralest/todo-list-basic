@@ -2,13 +2,18 @@
 const input = document.querySelector('#input');
 const btnAdd = document.querySelector('#btn-add');
 const form = document.querySelector('#form');
-const toDoList = document.querySelector('#todo-list');
+const toDoList = document.querySelector('ul');
 
 //Funciones
 eventListeners();
 
 function eventListeners() {
     btnAdd.addEventListener('click', addTask);
+    input.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter') {
+            addTask();
+        }
+    });
     removeTask();
 };
 
@@ -23,25 +28,25 @@ function addTask() {
 };
 
 function taskHTML(task) {
-    const div = document.createElement('div');
+    const li = document.createElement('li');
     const p = document.createElement('p');
     const btnRemove = document.createElement('button')
 
-    div.classList.add('border', 'rounded', 'mt-3', 'mb-3', 'col-10', 'm-auto', 'bg-white');
-    btnRemove.classList.add('btn', 'btn-danger', 'col-1');
+    li.classList.add('list-group-item', 'col-12', 'd-flex', 'justify-content-between', 'align-items-center');
     p.textContent = task;
-    btnRemove.textContent = '-';
+    btnRemove.classList.add('btn', 'btn-danger');
+    btnRemove.textContent = 'X';
 
-    div.appendChild(p);
-    toDoList.appendChild(div);
-    toDoList.appendChild(btnRemove);
+    li.appendChild(p);
+    li.appendChild(btnRemove);
+    toDoList.appendChild(li);
+
+    btnRemove.addEventListener('click', removeTask);
 
 };
 
-function removeTask() {
-
+function removeTask(e) {
+    const item = e.target.parentElement;
+    toDoList.removeChild(item);
 };
 
-function limpiar(e) {
-    e.target.value = '';
-}; 
