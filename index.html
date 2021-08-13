@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>To-do List App</title>
+</head>
+<body>
+    <div class="app container-sm border mt-5 p-3 bg-light rounded">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <h1>Lista de tareas</h1>
+            </div>
+        </div>
+        <form class="row justify-content-center" id="form" action="#" method="POST">
+            <div class="input-task col-8">
+                <input class="form-control" id="input" type="text" placeholder="Ej: Sacar la basura...">
+            </div>
+            <div class="btn-add col-2">
+                <button class="btn btn-primary" id="btn-enviar" type="button">+</button>
+            </div>
+        </form>
+        <div class="row" id="todo-list"></div>
+    </div>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
